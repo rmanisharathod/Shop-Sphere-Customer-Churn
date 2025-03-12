@@ -53,8 +53,11 @@ DAX Calculations
 To determine the tenure of customers, the following DAX measures were used:
 
 Minimum Tenure Customer = MIN('E Comm'[Tenure])
+
 Median Tenure Customer = MEDIAN('E Comm'[Tenure])
-Maximum Tenure Customer = MAX('E Comm'[Tenure])  
+
+Maximum Tenure Customer = MAX('E Comm'[Tenure])
+
 Tenure Customer Range = IF('E Comm'[Minimum Tenure Customer] <= 10, "Bronze", IF('E Comm'[Median Tenure Customer] <= 20, "Silver", "Gold"))
 
 - This classification helps categorize customers based on their tenure duration:
