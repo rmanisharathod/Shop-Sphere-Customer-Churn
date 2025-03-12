@@ -52,13 +52,13 @@ DAX Calculations
 1. Customer Tenurity Classification
 To determine the tenure of customers, the following DAX measures were used:
 
-Minimum Tenure Customer = MIN('E Comm'[Tenure])
+   Minimum Tenure Customer = MIN('E Comm'[Tenure])
 
-Median Tenure Customer = MEDIAN('E Comm'[Tenure])
+   Median Tenure Customer = MEDIAN('E Comm'[Tenure])
 
-Maximum Tenure Customer = MAX('E Comm'[Tenure])
+   Maximum Tenure Customer = MAX('E Comm'[Tenure])
 
-Tenure Customer Range = IF('E Comm'[Minimum Tenure Customer] <= 10, "Bronze", IF('E Comm'[Median Tenure Customer] <= 20, "Silver", "Gold"))
+   Tenure Customer Range = IF('E Comm'[Minimum Tenure Customer] <= 10, "Bronze", IF('E Comm'[Median Tenure Customer] <= 20, "Silver", "Gold"))
 
 - This classification helps categorize customers based on their tenure duration:
    Bronze: Customers with a tenure of 10 months or less.
@@ -68,10 +68,13 @@ Tenure Customer Range = IF('E Comm'[Minimum Tenure Customer] <= 10, "Bronze", IF
 2. Warehouse to Home Distance Analysis
 To analyze the relationship between warehouse-to-home distance and order frequency, the following DAX calculations were used:
 
-Minimum distance from warehouse to home = MIN('E Comm'[Warehouse To Home])
-Median Warehouse to Home = MEDIAN('E Comm'[Warehouse To Home])
-Maximum distance from warehouse to home = MAX('E Comm'[Warehouse To Home])
-Customer to warehouse Distance = IF('E Comm'[Minimum distance from warehouse to home] <= 20, "Near", IF('E Comm'[Median Distance from Warehouse to Home] <= 30, "Medium", "Far"))
+   Minimum distance from warehouse to home = MIN('E Comm'[Warehouse To Home])
+
+   Median Warehouse to Home = MEDIAN('E Comm'[Warehouse To Home])
+
+   Maximum distance from warehouse to home = MAX('E Comm'[Warehouse To Home])
+
+   Customer to warehouse Distance = IF('E Comm'[Minimum distance from warehouse to home] <= 20, "Near", IF('E Comm'[Median Distance from Warehouse to Home] <= 30, "Medium", "Far"))
 
 - This classification helps in understanding how proximity to the warehouse impacts the number of orders placed:
    Near: Customers within 20 miles.
@@ -81,7 +84,7 @@ Customer to warehouse Distance = IF('E Comm'[Minimum distance from warehouse to 
 3. Average Number of Devices Registered
 To identify the average number of devices per customer:
 
-Average number of devices registered = AVERAGE('E Comm'[Number Of Device Registered])
+   Average number of devices registered = AVERAGE('E Comm'[Number Of Device Registered])
 
 This measure helps determine customer engagement across multiple devices, which may influence retention and churn rates.
 
