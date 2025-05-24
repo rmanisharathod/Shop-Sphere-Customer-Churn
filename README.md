@@ -1,36 +1,65 @@
-Shop Sphere Customer Churn Analysis
+# 📉 Shop Sphere Customer Churn Analysis
 
-Overview
+![Power BI](https://img.shields.io/badge/Tool-PowerBI-yellow.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Data Source](https://img.shields.io/badge/Data-Behavioral%20%7C%20Transactional%20%7C%20Demographic-lightgrey.svg)
 
-This project presents an analysis of customer churn for Shop Sphere, an e-commerce platform. The insights are derived from an extensive dataset containing customer behavioral metrics, transaction details, and demographics. The report has been generated using Power BI with DAX functions to provide valuable insights into customer tenure, order patterns, and warehouse-home distance relationships.
+> A comprehensive business intelligence report on customer churn for **Shop Sphere**, powered by **Power BI** and **DAX**. The report analyzes behavioral, transactional, and demographic data to uncover factors influencing churn, purchase behavior, and customer engagement.
 
-Dataset Description
-The dataset consists of multiple customer attributes, including:
- - Customer ID
- - Churn Status (1 = Churned, 0 = Active)
- - Tenure (Duration of customer relationship)
- - Preferred Login Device (Mobile, Computer, etc.)
- - City Tier (Economic classification of the customer’s city)
- - Warehouse to Home Distance (Distance in kilometers)
- - Preferred Payment Mode (UPI, COD, Debit Card, etc.)
- - Gender
- - Hours Spent on App
- - Number of Registered Devices
- - Preferred Order Category Last Month
- - Satisfaction Score
- - Marital Status
- - Number of Addresses
- - Complaints in Last Month
- - Order Amount Hike from Last Year
- - Coupons Used in Last Month
- - Order Count in Last Month
- - Days Since Last Order
- - Cashback Amount Received in Last Month
+---
 
-Key Analytical Approaches
+## 📌 Project Highlights
 
-1. Customer Tenure Classification
-To assess customer longevity, tenure is categorized using the following **DAX functions**:
+- 📊 **Power BI dashboard** visualizing churn trends, tenure segmentation, and order behavior
+- 🧠 **DAX-powered segmentation** based on tenure and warehouse-home distance
+- 📍 **Customer location & behavior analytics** to determine engagement patterns
+- 📱 **Multi-device usage insights** to assess customer tech adoption
+- 💬 **Complaint and satisfaction metrics** to evaluate experience
+- 💳 **Payment preference analysis** across active and churned customers
+
+---
+
+## 🧪 Technologies Used
+
+| Tool         | Purpose                                 |
+|--------------|-----------------------------------------|
+| Power BI 📊   | Interactive dashboard and analytics      |
+| DAX 🧮        | Custom measures and segmentation logic   |
+| Excel/CSV 📂 | Dataset source (customer metrics)         |
+
+---
+
+## 📂 Dataset Description
+
+The dataset contains 20+ customer-specific attributes:
+
+- `Customer ID`  
+- `Churn Status` (1 = Churned, 0 = Active)  
+- `Tenure`  
+- `Preferred Login Device`  
+- `City Tier`  
+- `Warehouse to Home Distance`  
+- `Preferred Payment Mode`  
+- `Gender`, `Marital Status`  
+- `Hours Spent on App`  
+- `Number of Devices Registered`  
+- `Preferred Order Category (Last Month)`  
+- `Satisfaction Score`  
+- `Number of Addresses`  
+- `Complaints in Last Month`  
+- `Order Amount Hike from Last Year`  
+- `Coupons Used in Last Month`  
+- `Order Count in Last Month`  
+- `Days Since Last Order`  
+- `Cashback Amount Received (Last Month)`
+
+---
+
+## 🧾 DAX Functions for Key Analytical Segmentation
+
+### 🥇 Customer Tenure Classification
+
+Customers are grouped into **Bronze**, **Silver**, or **Gold** based on their relationship duration:
 
 ```DAX
 Minimum Tenure Customer = MIN('E Comm'[Tenure])
@@ -41,10 +70,12 @@ Tenure Customer Range =
 IF('E Comm'[Minimum Tenure Customer] <= 10, "Bronze",
    IF('E Comm'[Median Tenure Customer] <= 20, "Silver","Gold"))
 ```
-This classification helps in segmenting customers into Bronze (short-term), Silver (medium-term), and Gold (long-term).
 
-2. Warehouse to Home Distance and Order Patterns
-To understand the impact of distance on ordering behavior, the following calculations are used:
+---
+
+## 🚚 Warehouse-to-Home Distance Impact
+
+Customers are segmented by proximity to warehouse:
 
 ```DAX
 Minimum distance from warehouse to home = MIN('E Comm'[Warehouse To Home])
@@ -55,31 +86,118 @@ Customer to warehouse Distance =
 IF('E Comm'[Minimum distance from warehouse to home] <= 20, "Near",
    IF('E Comm'[Median Distance from Warehouse to Home] <= 30, "Medium","Far"))
 ```
-This segmentation helps evaluate the correlation between distance and order frequency.
+📦 Determines if distance affects order volume and churn.
 
-3. Device Usage Insights
-The average number of devices registered per customer is calculated using:
+---
+## 📱 Device Usage Insights
+
+Understanding device engagement:
 
 ```DAX
 Average number of devices registered = AVERAGE('E Comm'[Number Of Device Registered])
 ```
-This metric is useful in understanding multi-device engagement trends among customers.
+🧠 Shows multi-device behavior patterns among loyal and churned customers.
 
-Key Findings from the Report
- - Total Cashback Issued (Last Month): $619.74K
- - Total Complaints Registered: 1,065
- - Preferred Payment Mode Distribution: 
-  - UPI: 7.55%
-  - COD: 9%
-  - Credit/Debit Cards & Wallets: Major chunk (40.75%)
- - Churn vs. Orders Analysis:
-  - Higher churn rates among short-tenured customers (Bronze segment)
-  - Customers closer to warehouses tend to order more frequently
- - Most Popular Order Categories (Last Month):
-  - Fashion
-  - Laptops & Accessories
-- Average Hours Spent on App by Active Users: Varies by tenure
+---
 
-Conclusion
+## 📊 Insight Charts Overview: Visualizing Key Business Metrics
 
-This report provides **critical insights into customer churn and purchasing behavior**, enabling **Shop Sphere** to improve retention strategies. The analysis highlights factors affecting churn, such as tenure, warehouse-home distance, and device usage.
+| 📈 Plot Title                         | 📊 Chart Type | 🧾 Columns Used                         | 🔍 Purpose                                              |
+| ------------------------------------- | ------------- | --------------------------------------- | ------------------------------------------------------- |
+| Churn by Tenure Segment               | Clustered Bar | Churn Status, Tenure Group              | Evaluate churn rates across Bronze/Silver/Gold segments |
+| Orders vs. Warehouse Distance         | Column Chart  | Order Count, Warehouse to Home Distance | Assess distance influence on ordering behavior          |
+| Preferred Payment Mode Distribution   | Pie Chart     | Payment Mode, Count                     | Identify customer payment habits                        |
+| Customer Satisfaction vs. Complaints  | Scatter Plot  | Satisfaction Score, Complaints          | Spot trends in experience and dissatisfaction           |
+| Cashback Distribution                 | Bar Chart     | Cashback Amount, Churn Status           | Compare incentive impact on churn                       |
+| Device Engagement by Status           | Column Chart  | Number of Devices, Churn Status         | Multi-device adoption among active vs churned users     |
+| Order Categories Last Month           | Donut Chart   | Order Category, Count                   | Determine trending product categories                   |
+| Active Users - Hours on App by Tenure | Line Chart    | Hours Spent, Tenure Group               | Analyze session time by loyalty segment                 |
+
+---
+
+## 📸 Sample Visualizations
+
+<table>
+  <tr>
+    <td><img src="shop_sphere_customer_churn_overview.PNG" alt="Shop Sphere Customer Churn Overview" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center">Shop Sphere Customer Churn Overview</td>
+  </tr>
+</table>
+
+📊 These insights help Shop Sphere understand what drives churn and how to enhance customer engagement.
+
+---
+
+## 📈 Key Findings
+
+* 💰 Total Cashback Issued (Last Month): $619.74K
+* ⚠️ Total Complaints Registered: 1,065
+* 🧾 Preferred Payment Mode:
+  * UPI: 7.55%
+  * COD: 9%
+  * Cards & Wallets: ~40.75%
+* 📉 Churn Drivers:
+  * High churn among Bronze (short-tenure) customers
+  * Customers closer to warehouses order more often
+  * Device usage and session time correlate with retention
+* 🛍️ Popular Order Categories:
+  * Fashion 👗
+  * Laptops & Accessories 💻
+
+---
+
+## 🧭 File Structure
+
+```bash
+shop-sphere-churn-analysis/
+├── PowerBI/
+│   └── ShopSphere_Churn_Report.pbix   # Power BI dashboard
+├── DAX_Measures/
+│   └── churn_dax_metrics.txt          # DAX functions for metrics
+├── Assets/
+│   └── *.png                          # Dashboard visualizations
+└── README.md                          # Project documentation
+```
+
+---
+
+## 🚀 Getting Started
+1. **Clone the Repository**
+```bash
+git clone https://github.com/your-username/shop-sphere-churn-analysis.git
+cd shop-sphere-churn-analysis
+```
+2. **Open Power BI Report**
+
+ * Open ShopSphere_Churn_Report.pbix in Power BI Desktop.
+
+3. **Explore Interactive Dashboards**
+
+ * Navigate by tabs: Churn Overview, Customer Behavior, Payments & Complaints, Loyalty Segmentation
+
+---
+
+## 📜 License
+This project is licensed under the MIT License.
+Free to use, modify, and distribute with proper attribution.
+
+---
+
+## 🙌 Acknowledgments
+Special thanks to:
+🛍️ Shop Sphere Team for the dataset
+🧠 Power BI & DAX for enabling data-driven decision-making
+🌍 Open-source data community for BI inspiration and tools
+
+---
+
+## 📫 Contact
+Have questions, suggestions, or want to collaborate?
+📧 r.manisharathod6@gmail.com
+
+
+
+
+
