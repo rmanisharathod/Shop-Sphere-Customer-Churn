@@ -194,10 +194,5 @@ Special thanks to:
 ---
 
 ## 📫 Contact
-Have questions, suggestions, or want to collaborate?
-📧 r.manisharathod6@gmail.com
 
-
-
-
-
+For feedback, ideas, or collaboration: 📧 r.manisharathod6@gmail.com
